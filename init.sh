@@ -2,13 +2,16 @@
 
 # Initializes parameters for HamClock stored in environmental variables
 if [ ! -f /root/.hamclock/eeprom ]; then
+    # Creates the eeprom file if it doesn't exist
     /usr/local/bin/hamclock -0 -k -o & 
     while [ ! -f /root/.hamclock/eeprom ]; do
         sleep 1
     done
+
+    # restarts hamclock to load the eeprom
     pkill hamclock & sleep 10;
 
-    # Configure now that eeprom is created
+    # Configure eeprom with environmental variables
     let OFFSET=$UTC_OFFSET*3600
     perl hceeprom.pl NV_TITLE $CALLSIGN &&
     perl hceeprom.pl NV_CALLSIGN $CALLSIGN &&
@@ -32,6 +35,7 @@ if [ ! -f /root/.hamclock/eeprom ]; then
     perl hceeprom.pl -l
 fi
 
+# Starts HamClock
 /usr/local/bin/hamclock -o -k
 
 # -t 20 throttle CPU to 20%, minimum is 10

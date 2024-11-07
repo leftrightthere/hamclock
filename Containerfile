@@ -1,5 +1,4 @@
-## PLEASE DON'T CHANGE ANYTHING IN THIS FILE UNLESS YOU'RE developing.
-## REFER TO THE DOCUMENTATION FOR CONFIGURATION OF YOUR HAMCLOCK!
+## Inspired by these projects:
 ## https://github.com/zeidlos/hamclock-docker
 ## https://github.com/ChrisRomp/hamclock-docker
 ## https://www.clearskyinstitute.com/ham/HamClock/
