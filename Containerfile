@@ -21,10 +21,10 @@ EXPOSE 8080/tcp
 EXPOSE 8081/tcp     
 EXPOSE 8082/tcp
 
-# Copy runfile
-WORKDIR /opt/hamclock
-COPY init.sh .
-RUN chmod +x init.sh
+# Copy init.sh script to container
+WORKDIR /opt/hamclock/ESPHamClock
+COPY init.sh /opt/hamclock/
+RUN chmod +x /opt/hamclock/init.sh
 
 # Install prerequisites
 RUN apk update \
@@ -32,7 +32,8 @@ RUN apk update \
  && apk cache clean
 
 # Install Hamclock
-RUN rm -fr ESPHamClock \
+RUN cd /opt/hamclock \
+ && rm -fr ESPHamClock \
  && curl -O https://www.clearskyinstitute.com/ham/HamClock/ESPHamClock.zip \
  && unzip ESPHamClock.zip \
  && cd ESPHamClock \
@@ -44,12 +45,9 @@ RUN rm -fr ESPHamClock \
 RUN cd /opt/hamclock \
  && curl -O https://www.clearskyinstitute.com/ham/HamClock/hamclock-contrib.zip \
  && unzip hamclock-contrib.zip \
+ && chmod +x hamclock-contrib/hceeprom.pl \
+ && mv hamclock-contrib/hceeprom.pl /opt/hamclock/ESPHamClock/ \
  && rm hamclock-contrib.zip
 
-RUN mv hamclock-contrib/hceeprom.pl /opt/hamclock/ESPHamClock
-WORKDIR /opt/hamclock/ESPHamClock
-RUN chmod +x hceeprom.pl
-
-# Set working directory
-WORKDIR /opt/hamclock/ESPHamClock
+# Set command parameters
 CMD /opt/hamclock/init.sh

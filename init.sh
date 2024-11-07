@@ -3,13 +3,10 @@
 # Initializes parameters for HamClock stored in environmental variables
 if [ ! -f /root/.hamclock/eeprom ]; then
     # Creates the eeprom file if it doesn't exist
-    /usr/local/bin/hamclock -0 -k -o & 
+    /usr/local/bin/hamclock -0 &
     while [ ! -f /root/.hamclock/eeprom ]; do
         sleep 1
     done
-
-    # restarts hamclock to load the eeprom
-    pkill hamclock & sleep 10;
 
     # Configure eeprom with environmental variables
     let OFFSET=$UTC_OFFSET*3600
@@ -33,8 +30,10 @@ if [ ! -f /root/.hamclock/eeprom ]; then
     perl hceeprom.pl NV_WIFI_PASSWD $WIFI_PWD &&
     perl hceeprom.pl NV_SHOW_PIP $SHOW_PUB_IP &&
     perl hceeprom.pl -l
+    
+    # restarts hamclock to load the eeprom
+    pkill hamclock
 fi
-
 # Starts HamClock
 /usr/local/bin/hamclock -o -k
 
