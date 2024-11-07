@@ -34,5 +34,6 @@ fi
 
 /usr/local/bin/hamclock -o -k
 
-# -t throttle CPU to 20%
+# -t 20 throttle CPU to 20%, minimum is 10
 # -o stdout instead of log file
+# -k skip setup

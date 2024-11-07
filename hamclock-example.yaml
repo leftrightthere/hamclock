@@ -1,6 +1,5 @@
 # Created with podman-5.2.5
 # Create Pod and PersistentVolumeClaim for HamClock
-# Testing Version
 apiVersion: v1
 kind: Pod
 metadata:
@@ -14,19 +13,19 @@ spec:
     env:
       # PLEASE COPY THIS FILE TO config.env
     - name: CALLSIGN
-      value: KC3WRK
+      value: AB1CDE
       # Use 6-digit locator
     - name: LOCATOR
-      value: FM19tn
+      value: AA00aa
       # Positive numbers are north, negative south
     - name: LAT
-      value: "39.54"
+      value: "40.00"
       # Positive numbers are east, negative west
     - name: LONG
-      value: "-76.33"
+      value: "-70.00"
       # UTC offset in hours. Negative number for negative offset
     - name: UTC_OFFSET
-      value: "-5"
+      value: "-4"
       # CW=19 SSB=38 AM=49 WSPR=3 FT8=13 FT4=17
     - name: VOACAP_MODE
       value: "38"
