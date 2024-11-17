@@ -43,6 +43,9 @@ if [ ! -f ${EEPROM_PATH} ]; then
     perl hceeprom.pl NV_PLOT_0 0x19 &&
     perl hceeprom.pl NV_DX_GRID $DXGRID &&
     perl hceeprom.pl -l
+
+    # Kill the initial HamClock process to load the new eeprom
+    pkill hamclock
 fi
 # Starts HamClock
 /usr/local/bin/hamclock -o -k

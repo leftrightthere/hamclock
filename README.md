@@ -58,7 +58,8 @@ podman run --detach --name hamclock \
   -p 8080:8080 \
   -p 8081:8081 \
   -p 8082:8082 \
-  -e LOCATOR=FM11ma \
+  -e UTC_OFFSET=-5 \
+  -e LOCATOR=AA00aa \
   -e DXGRID=JJ00aa \
   -v ghcr-hamclock:/opt/hamclock/hamuser/.hamclock \
   ghcr.io/leftrightthere/hamclock
@@ -92,7 +93,8 @@ docker run --detach --name hamclock \
   -p 8080:8080 \
   -p 8081:8081 \
   -p 8082:8082 \
-  -e LOCATOR=FM11ma \
+  -e UTC_OFFSET=-5 \
+  -e LOCATOR=AA00aa \
   -e DXGRID=JJ00aa \
   -v ghcr-hamclock:/opt/hamclock/hamuser/.hamclock \
   ghcr.io/leftrightthere/hamclock
