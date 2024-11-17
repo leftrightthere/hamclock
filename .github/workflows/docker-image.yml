@@ -31,8 +31,7 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
         
     - name: Build the Docker image
-      run: docker build . --file Containerfile --tag ghcr.io/${{ github.repository_owner }}/hamclock:latest \
-                                               --tag ${{ secrets.DOCKER_USERNAME }}/hamclock:latest 
+      run: docker build --file Containerfile --tag ghcr.io/${{ github.repository_owner }}/hamclock:latest --tag ${{ secrets.DOCKER_USERNAME }}/hamclock:latest .
       #my-image-name:$(date +%s)
 
     - name: Push the Docker image to GitHub Registry
