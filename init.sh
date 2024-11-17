@@ -41,7 +41,7 @@ if [ ! -f ${EEPROM_PATH} ]; then
     perl hceeprom.pl NV_SHOW_PIP $SHOW_PUB_IP &&
     perl hceeprom.pl NV_X11FLAGS 0x01 &&
     perl hceeprom.pl NV_PLOT_0 0x19 &&
-    perl hceeprom.pl NV_DX_GRID "JJ00aa" &&
+    perl hceeprom.pl NV_DX_GRID $DXGRID &&
     perl hceeprom.pl -l
 fi
 # Starts HamClock
