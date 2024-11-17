@@ -1,6 +1,15 @@
 # hamclock
 Hamclock container with Docker and Podman compatibility
 
+## Repositories
+```
+# GitHub
+ghcr.io/leftrightthere/hamclock
+
+# Docker
+leftrightthere/hamclock
+```
+
 ## Deviations
 
 The container creates a new user account and relocates the profile path to '/opt/hamclock/hamuser' instead of using the default root user.
