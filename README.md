@@ -3,6 +3,8 @@ Hamclock container with Docker and Podman compatibility
 
 ## Repositories
 ```
+# Daily builds scheduled to build every morning
+
 # GitHub
 ghcr.io/leftrightthere/hamclock
 
