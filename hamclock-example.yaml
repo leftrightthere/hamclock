@@ -60,15 +60,20 @@ spec:
       value: "no-PWD"
     - name: SHOW_PUB_IP
       value: "1"
+    # Expose the following ports
     ports:
+    # system settings port (probably should only be exposed on localhost)
     - containerPort: 8080
       hostPort: 8080
+    # hamclock web interface R/W (Probably should NOT be exposed to the world)
     - containerPort: 8081
       hostPort: 8081
+    # hamclock web interface R/O (Probably should be exposed to the world if you're sharing your hamclock)
     - containerPort: 8082
       hostPort: 8082
     stdin: true
     tty: true
+    # Limit the resources the container can use
     resources:
       limits:
         memory: "128Mi"
@@ -77,6 +82,7 @@ spec:
         memory: "64Mi"
         cpu: "250m"
     restartPolicy: unless-stopped
+    # Liveness probe to check if the container is still alive
     livenessProbe:
       httpGet:
         path: /get_sys.txt

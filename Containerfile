@@ -49,5 +49,10 @@ RUN cd /opt/hamclock \
  && mv hamclock-contrib/hceeprom.pl /opt/hamclock/ESPHamClock/ \
  && rm hamclock-contrib.zip
 
+# Insert User (We don't want to run as root)
+RUN adduser --home /opt/hamclock/hamuser --disabled-password --gecos "Hamclock user" hamuser
+ENV HOME /opt/hamclock/hamuser
+USER hamuser
+
 # Set command parameters
 CMD /opt/hamclock/init.sh
