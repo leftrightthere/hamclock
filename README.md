@@ -110,3 +110,4 @@ docker run --detach --name hamclock \
   -v ghcr-hamclock:/opt/hamclock/hamuser/.hamclock \
   ghcr.io/leftrightthere/hamclock
 ```
+
