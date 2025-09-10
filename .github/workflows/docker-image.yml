@@ -2,7 +2,7 @@ name: Build and push HamClock container
 
 on:
   schedule:
-    - cron: '0 5 * * *'
+    - cron: '0 5 * * 5'
   push:
     branches: [ "main" ]
 #  pull_request:
