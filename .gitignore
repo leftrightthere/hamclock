@@ -1,1 +1,4 @@
 hamclock.yaml
+node_modules/
+.env
+*.log
